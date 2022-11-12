@@ -84,5 +84,7 @@ public class AdminController {
 
 		return new ResponseEntity<List<TripBooking>>(tripBooking, HttpStatus.OK);
 	}
+	
+//here all the method of controller 
 
 }
