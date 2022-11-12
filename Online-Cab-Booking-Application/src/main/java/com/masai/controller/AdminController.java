@@ -32,8 +32,7 @@ public class AdminController {
 	private AdminService AService;
 	
 	@Autowired
-	 public TripBookingService tripBookingService;
-	
+	private TripBookingService tripBookingService;
 	
 	@PostMapping("/create")
 	public ResponseEntity<Admin> saveAdmin(@Valid @RequestBody Admin admin) throws AdminException {
@@ -54,29 +53,29 @@ public class AdminController {
 		
 	}
 	@DeleteMapping("/detete")
-	public ResponseEntity<Admin> deleteAdmin(@RequestBody Admin admin) throws AdminException{
+	public ResponseEntity<String> deleteAdmin(@RequestParam Integer adminId, @RequestParam String key) throws AdminException{
 		
-		Admin DeleteAdmin = AService.deleteAdmin(admin);
+		String DeleteAdmin = AService.deleteAdmin(adminId, key);
 		
-		return new ResponseEntity<Admin>(DeleteAdmin,HttpStatus.OK);
+		return new ResponseEntity<String>(DeleteAdmin,HttpStatus.OK);
 	}
 	
 	@GetMapping("/Alltrips")
-	public ResponseEntity<List<TripBooking>>  allTrips() throws TripBookingException{
+	public ResponseEntity<List<TripBooking>>  allTrips(@RequestParam Integer adminId ,@RequestParam String key) throws TripBookingException{
 		
-		List<TripBooking> tripBooking = tripBookingService.getAllTrips();
+		List<TripBooking> tripBooking = tripBookingService.getAllTrips(adminId,key);
 		
 		return new ResponseEntity<List<TripBooking>>(tripBooking,HttpStatus.OK);
 	}
 	
-	@GetMapping("/tripbooking/{customerid}")
-	public ResponseEntity<List<TripBooking>> allTripBooking(@PathVariable("customerid") Integer customerId) throws TripBookingException{
+	@GetMapping("/getAllTripsByCab")
+	public ResponseEntity<List<TripBooking>> getAllTripsByCab(@RequestParam Integer cabId,@RequestParam Integer adminId,@RequestParam String key) throws AdminException{
 		
-		List<TripBooking> savedBooking=tripBookingService.viewAllTripsCustomer(customerId);		
-		return new ResponseEntity<List<TripBooking>>(savedBooking,HttpStatus.OK);	
-	
+		List<TripBooking> tripBooking = AService.getAllTripsByCab(cabId,adminId,key);
+		
+		return new ResponseEntity<List<TripBooking>>(tripBooking,HttpStatus.OK);
+		
 	}
-	
 	
 
 }

@@ -80,7 +80,7 @@ public class LoginServiceImpl implements LoginService{
 		
 		
 		if(validCustomerSession == null) {
-			throw new LoginException("User Not Logged In with this number");
+			throw new LoginException("User Not Logged In");
 			
 		}
 		

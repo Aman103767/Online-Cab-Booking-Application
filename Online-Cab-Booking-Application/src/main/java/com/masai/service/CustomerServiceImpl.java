@@ -72,9 +72,18 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public String deleteCustomer(Customer customer ) throws CustomerException {
+	public String deleteCustomer(Integer customerId ,String key ) throws CustomerException {
 		// TODO Auto-generated method stub
-		Optional<Customer> c = cDao.findById(customer.getCustomerId());
+		CurrentUserSession loggedInUser= sDao.findByUuid(key);
+		if(loggedInUser == null) {
+			throw new CustomerException("Please provide a valid key to delete a customer");
+		}
+		
+		if(customerId == loggedInUser.getUserId()) {
+			
+		
+		
+		Optional<Customer> c = cDao.findById(customerId);
 		
 		
 		if(c.isPresent()) {
@@ -93,17 +102,33 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		
 		cDao.delete(cust);
-		return "Customer with id : "+customer.getCustomerId()+" deleted"; 
+		return "Customer with id : "+customerId+" deleted"; 
 		
 		}else {
-			throw new CustomerException("Customer not found with Id : " +customer.getCustomerId());
+			throw new CustomerException("Customer not found with Id : " +customerId);
+		}
+		
+		}
+		else {
+			throw new CustomerException("Invalid Customer Details, please login first");
 		}
 		
 		
 	}
 
 	@Override
-	public List<Customer> viewCustomer() throws CustomerException {
+	public List<Customer> viewCustomerAll(Integer customerId,String key) throws CustomerException {
+		
+		CurrentUserSession loggedInUser= sDao.findByUuid(key);
+		if(loggedInUser == null) {
+			throw new CustomerException("Please provide a valid key to view customers details");
+		}
+		
+		if(customerId == loggedInUser.getUserId()) {
+			
+		
+		
+		
 		// TODO Auto-generated method stub
 		List<Customer> customerList = cDao.findAll();
 		if(customerList.size() != 0) {
@@ -112,11 +137,23 @@ public class CustomerServiceImpl implements CustomerService {
 		else {
 			throw new CustomerException("No Customer found");
 		}
-	
+		}else {
+			throw new CustomerException("wrong details please login first");
+		}
 	}
 
 	@Override
-	public Customer viewCustomer(Integer customerId) throws CustomerException {
+	public Customer viewCustomer(Integer customerId,String key) throws CustomerException {
+		
+		CurrentUserSession loggedInUser= sDao.findByUuid(key);
+		if(loggedInUser == null) {
+			throw new CustomerException("Please provide a valid key to view customer details");
+		}
+		
+		if(customerId == loggedInUser.getUserId()) {
+			
+		
+		
 		// TODO Auto-generated method stub
 		Customer customer = cDao.findByCustomerId(customerId);
 		if(customer != null ) {
@@ -124,6 +161,9 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		else {
 			throw new CustomerException("No Customer found");
+		}
+		}else {
+			throw new CustomerException("Invalid Customer Details, please login first");
 		}
 
 	}
