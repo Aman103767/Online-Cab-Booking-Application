@@ -14,9 +14,9 @@ public interface AdminService {
 		
 	 public  Admin updateAdmin(Admin Admin,String key)throws AdminException;
 	 
-	 public Admin deleteAdmin(Admin admin) throws AdminException;
+	 public String deleteAdmin(Integer adminId,String key) throws AdminException;
 	 
-	 public List<TripBooking> getAllTripsByCab(Integer cabId) throws AdminException;
+	 public List<TripBooking> getAllTripsByCab(Integer cabId , Integer admin,String key) throws AdminException;
 
 	
 }
