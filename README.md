@@ -106,6 +106,19 @@ http://localhost:8888/swagger-ui/
 | `POST` | `Login` | `http://localhost:8888/loginDriver` | Login Driver |
 | `GET` | `Logout` | `http://localhost:8888/logoutDriver` | Logout Driver |
 
+## Admin Requests
+
+```http
+  Admin Controller
+```
+
+| Request | METHOD     |  URI | Description                |
+| :-------- | :------- | :----- | :------------------------- |
+| `POST` | `Create` | `http://localhost:8888/admin/create` | Create Admin |
+| `PUT` | `Update` | `http://localhost:8888/admin/update` | Update Admin |
+| `DELETE` | `Delete` | `http://localhost:8888/admin/delete` | Delete Admin |
+| `POST` | `Get All Trip` | `http://localhost:8888/admin/getalltrips` | Show All Trip |
+| `GET` | `Get Trip By Cab` | `http://localhost:8888/admin/getalltripsbycab/{cabId}` | Get All Trip By Cab ID |
 
 ## Customer Requests
 
@@ -140,18 +153,6 @@ http://localhost:8888/swagger-ui/
 | `POST` | `Book Trip` | `http://localhost:8888/cabdriver/tripcompleted` | Trip Completed |
 
 
-## Admin Requests
 
-```http
-  Admin Controller
-```
-
-| Request | METHOD     |  URI | Description                |
-| :-------- | :------- | :----- | :------------------------- |
-| `POST` | `Create` | `http://localhost:8888/admin/create` | Create Admin |
-| `PUT` | `Update` | `http://localhost:8888/admin/update` | Update Admin |
-| `DELETE` | `Delete` | `http://localhost:8888/admin/delete` | Delete Admin |
-| `POST` | `Get All Trip` | `http://localhost:8888/admin/getalltrips` | Show All Trip |
-| `GET` | `Get Trip By Cab` | `http://localhost:8888/admin/getalltripsbycab/{cabId}` | Get All Trip By Cab ID |
 
 
