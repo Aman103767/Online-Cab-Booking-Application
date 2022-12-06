@@ -127,5 +127,29 @@ http://localhost:8888/swagger-ui/
 | `POST` | `Get All Trip` | `http://localhost:8888/admin/getalltrips` | Show All Trip |
 | `GET` | `Get Trip By Cab` | `http://localhost:8888/admin/getalltripsbycab/{cabId}` | Get All Trip By Cab ID |
 
+## Login Requests
 
+```http
+  Admin Login
+```
+| Request | METHOD     |  URI | Description                |
+| :-------- | :------- | :----- | :------------------------- |
+| `POST` | `Login` | `http://localhost:8888/loginAdmin` | Login Admin |
+| `GET` | `Logout` | `http://localhost:8888/logoutAdmin` | Logout Admin |
+
+```http
+   Customer Login
+```
+| Request | METHOD     |  URI | Description                |
+| :-------- | :------- | :----- | :------------------------- |
+| `POST` | `Login` | `http://localhost:8888/loginCustomer` | Login Customer |
+| `GET` | `Logout` | `http://localhost:8888/logoutCustomer` | Logout Customer |
+
+```http
+   Driver Login
+```
+| Request | METHOD     |  URI | Description                |
+| :-------- | :------- | :----- | :------------------------- |
+| `POST` | `Login` | `http://localhost:8888/loginDriver` | Login Driver |
+| `GET` | `Logout` | `http://localhost:8888/logoutDriver` | Logout Driver |
 
